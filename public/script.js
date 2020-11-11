@@ -3,31 +3,26 @@ const appDiv = document.getElementById("app");
 appDiv.innerHTML = `<h1>Yen Cards</h1>`;
 
 function ResourceItem( name) {
-  console.log("forEach",name);
-   // Resources
-  //  document.getElementById('ntitle').innerHTML+= name.title
-  //  document.getElementById('cardId').innerHTML+= name.id
-  //  document.getElementById('text').innerHTML+= name.text
-   
+  // console.log("forEach",name);
    document.getElementById('yenblock2').innerHTML+=
    "Block 2<p>"+name.id+""+name.title+""+name.text+"</p>"    
   }
   
 function ResourceList({ db }) {
-  //  const cards = Object.keys(db)
+  // db.cards.forEach (arr=> {
+  //   //  console.log('name',arr.title )
+  //    ResourceItem( arr )
+  //    })
  
+   //  or
   for (let i = 0; i<db.cards.length; i++) {
     console.log('title', db.cards[i].title)
    
-    // document.getElementById('yenblock').innerHTML+=
-    // "Yenblock1<p>"+db.cards[i].id+""+db.cards[i].title+""+db.cards[i].text+"</p>"
-    ResourceItem( db.cards[i] )
+    document.getElementById('yenblock').innerHTML+=
+    "Yenblock1<p>"+db.cards[i].id+""+db.cards[i].title+""+db.cards[i].text+"</p>"
+    // ResourceItem( db.cards[i] )
   }  
-  // db.cards.forEach (arr=> {
-  //    console.log('name',arr.title )
-  //   //  document.getElementById('title').innerHTML+= arr.title 
-  //    ResourceItem( arr )
-  //    })
+
 
   }
   
@@ -45,7 +40,6 @@ function ResourceList({ db }) {
     .then(response => response.json())
     .then(
       db => ResourcesBlock({ db })
-        // (document.getElementById('resources').innerHTML = ResourcesBlock({ db }))
     )
   
   
