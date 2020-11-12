@@ -7,8 +7,9 @@ window
 )
 
 function ResourcesBlock({ db }) {
-  cards = db.cards
-  Object.keys(db).length ? ResourceList({ cards}) : NoResources()
+  cards =  db.cards
+  cards.length ? ResourceList({ cards }) : NoResources()
+  console.log('db',  db)
 }
 
 function ResourceList({ cards }) {
@@ -18,12 +19,44 @@ function ResourceList({ cards }) {
   }  
 }
   
-  function NoResources() {
+function NoResources() {
     return `<p>No resources found</p>`
   }
   
-
+  const nextBtn = document.querySelector('.nextBtn');
+  const preBtn = document.querySelector('.preBtn');
+  const container = document.querySelector('.cards');
   
+  let counter = 0;
+  
+  nextBtn.addEventListener('click',nextSlide);
+  preBtn.addEventListener('click',prevSlide);
+  
+  function nextSlide(){
+    container.animate([{opacity:'0.1'},{opacity:'1.0'}]
+      ,{duration:1000,fill:'forwards'});
+    if(counter === 3)
+    {
+      counter = -1;
+    }
+  
+    counter++;
+  
+    container.style.backgroundImage = `url(img/bcg-${counter}.png)`
+  }
+  
+  function prevSlide(){
+    container.animate([{opacity:'0.1'},{opacity:'1.0'}]
+      ,{duration:1000,fill:'forwards'});
+    if(counter === 0)
+    {
+      counter = 4;
+    }
+  
+    counter--;
+  
+    container.style.backgroundImage = `url(img/bcg-${counter}.png)`
+  }  
 
   
 
