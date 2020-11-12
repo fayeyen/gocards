@@ -13,19 +13,26 @@ function ResourcesBlock({ db }) {
 }
 
 function ResourceList({ cards }) {
+  var Arrcards=[];
   for (let i = 0; i<cards.length; i++) {
-    document.getElementById('yenblock').innerHTML+=
-    "<p>"+cards[i].id+" "+ cards[i].title+" "+cards[i].text+"</p>"
+    
+    const domcard=document.getElementById('yencard').innerHTML=
+        "<h1>"+cards[i].title+"</h1>"+"<h2>"+cards[i].subtitle+"</h2>"
+        +"<p>"+cards[i].text+"</p>"
+    Arrcards.push(domcard)
+        
   }  
+  console.log("arrcards", Arrcards)
 }
   
+
 function NoResources() {
     return `<p>No resources found</p>`
   }
   
   const nextBtn = document.querySelector('.nextBtn');
   const preBtn = document.querySelector('.preBtn');
-  const container = document.querySelector('.cards');
+  const container = document.querySelector('.cardjs');
   
   let counter = 0;
   

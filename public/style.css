@@ -35,7 +35,7 @@ body {
     color: #2DA936;
   }
   
-  p {
+  .p {
     margin-top: 30px;
     font-size: 12px;
     line-height: 1.583;
@@ -56,9 +56,10 @@ body {
     margin-right: auto;
     margin-left: auto;
     color: #F6F6F6
-
+    
   }
-  
+ 
+
   .row {
     display: -ms-flexbox;
     display: flex;
@@ -87,6 +88,7 @@ body {
   -ms-flex-positive: 1;
   flex-grow: 1;
   max-width: 100%;
+  color: palevioletred;
 }
 
 .row-cols-1 > * {
@@ -205,7 +207,7 @@ body {
 }
 
 
-.card{
+.cardjs{
   margin-top: 26px;
   padding-right: 13px;
   padding-left: 13px;
@@ -214,7 +216,7 @@ body {
   min-height: 323px;
   width: 308;
   border-radius: 0px;
-	background: url('img/bcg-0.JPG')center/cover;
+  background: url('img/bcg-0.png')center/cover;
 	box-shadow: 5px 10px black;
 	position: relative;
 }
