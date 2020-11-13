@@ -13,16 +13,16 @@ function ResourcesBlock({ db }) {
 }
 
 function ResourceList({ cards }) {
-  var Arrcards=[];
+
   for (let i = 0; i<cards.length; i++) {
     
     const domcard=document.getElementById('yencard').innerHTML=
         "<h1>"+cards[i].title+"</h1>"+"<h2>"+cards[i].subtitle+"</h2>"
         +"<p>"+cards[i].text+"</p>"
-    Arrcards.push(domcard)
+    this.Arrcards.push(domcard)
         
   }  
-  console.log("arrcards", Arrcards)
+  console.log("arrcards", this.Arrcards)
 }
   
 
@@ -30,41 +30,34 @@ function NoResources() {
     return `<p>No resources found</p>`
   }
   
+  Arrcards=[]
   const nextBtn = document.querySelector('.nextBtn');
   const preBtn = document.querySelector('.preBtn');
   const container = document.querySelector('.cardjs');
+  const yenslider = document.querySelector('cards')
   
-  let counter = 0;
+  let i = 0;
   
   nextBtn.addEventListener('click',nextSlide);
   preBtn.addEventListener('click',prevSlide);
   
   function nextSlide(){
-    container.animate([{opacity:'0.1'},{opacity:'1.0'}]
-      ,{duration:1000,fill:'forwards'});
-    if(counter === 3)
-    {
-      counter = -1;
-    }
-  
-    counter++;
-  
-    container.style.backgroundImage = `url(img/bcg-${counter}.png)`
+      if(i <= 0) i = Arrcards.length;	
+      i--;
+      console.log('Arrcards', Arrcards[i])
+      return YenCard();			 
   }
   
   function prevSlide(){
-    container.animate([{opacity:'0.1'},{opacity:'1.0'}]
-      ,{duration:1000,fill:'forwards'});
-    if(counter === 0)
-    {
-      counter = 4;
-    }
-  
-    counter--;
-  
-    container.style.backgroundImage = `url(img/bcg-${counter}.png)`
+      if(i >= Arrcards.length-1) i = -1;
+      i++;
+      console.log('Arrcards', Arrcards[i])
+      return YenCard();	
   }  
 
-  
+  function YenCard(){
+    return container.setAttribute('div', Arrcards[i]);
+    
+  }
 
 
