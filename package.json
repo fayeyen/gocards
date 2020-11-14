@@ -1,13 +1,13 @@
 {
-  "name": "dummy_card_api",
+  "name": "lite_card_api",
   "version": "1.0.0",
-  "description": "Dummy API for card content",
+  "description": "Lite API for card content ",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/json-server --watch db.json"
   },
-  "author": "claudiu garbacea",
-  "license": "ISC",
+  "author": "Yen Chong",
+  "license": "MIT",
   "dependencies": {
     "json-server": "^0.16.1"
   }

@@ -1,11 +1,12 @@
-// Write JS code think in Angular way
+// Write JS code think in Angular way // no import require 
 // use reverse gear to drive forward, are you kidding me ;-) ~ Yen
 // convert the stone age's rock into Angular gem ~ Yan
-// bact to the future 
+// bact to the future , the future build from the past ;-)  ~ Chong
+// My English is not good , programming language is my second language 😅
 
 arrcards=[]
 
-x = 5 // configable by showing the coloum
+x = 3 // configable by showing the coloum
 offset = x-1
 let i = 0
 
@@ -27,36 +28,26 @@ function ResourcesBlock({ db }) {
   cards.length ? ResourceList({ cards }) : NoResources()
 }
 
+
+function NoResources() {
+  return `<p>No resources found</p>`
+}
+
+
 function ResourceList({ cards }) {
   // change the object to array
   cards.forEach (card=> {
        return arrcards.push(card)
   })
-  
 
-  for (let i=0 ; i<x; i++) {
-      document.getElementById('yencard').innerHTML+=
-      "<div class=card>"
-          +"<h1>"+arrcards[i].id+" "+arrcards[i].title+"</h1>"+"<h2>"+arrcards[i].subtitle+"</h2>"
-          +"<p>"+arrcards[i].text+"</p>"+
-      "</div>"
-  }
-  // console.log('be array', arrcards)
-
-  return arrcards
+  return YenCard(arrcards)
 
 }
   
-
-function NoResources() {
-    return `<p>No resources found</p>`
-}
-
 
 function prevSlide(){
       newpush=[]
       if(i <1 ) { i = arrcards.length-offset; }
-      console.log('prev', i)	
       i--
     
       for (j = i; j<arrcards.length; j++) {
@@ -80,16 +71,24 @@ function nextSlide(){
 }  
 
 
-  function YenCard(newpush){
-    document.getElementById('yencard').innerHTML=""   /// clear the stack
-
+  function YenCard(cardsinfo){ 
+    getcard = document.createElement('yencard')
+    getcard.innerHTML=""   /// clear the stack
+  
     for (let i=0 ; i<x; i++) {
-    document.getElementById('yencard').innerHTML+=
-    "<div class='col' >  "
-        +"<h1>"+newpush[i].id+" "+newpush[i].title+"</h1>"+"<h2>"+newpush[i].subtitle+"</h2>"
-        +"<p>"+newpush[i].text+"</p>"+
-    "</div>"
+      kidCards=getcard.innerHTML+=
+            "<div class='card col'>"
+                +"<img src=\'"+cardsinfo[i].image_url+"\'>"
+                +"<h1>"+cardsinfo[i].id+" "+cardsinfo[i].title+"</h1>"+"<h2>"+cardsinfo[i].subtitle+"</h2>"
+                +"<p>"+cardsinfo[i].text+"</p>"
+                +"<h3>Learn More</h3>"
+            +"</div>"
+    
     }
+
+    document.getElementById('goCards').innerHTML="<div class='row cards'>"+kidCards+"</div>"
+
+    return document.getElementById('goCards').innerHTML
 
   }
 
