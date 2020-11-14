@@ -2,10 +2,9 @@
 // use reverse gear to drive forward, are you kidding me ;-) ~ Yen
 // convert the stone age's rock into Angular gem ~ Yan
 
-// const title;
-// const subtitle;
-// const text;
 arrcards=[]
+x= 3 // configable by showing the coloum
+
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
@@ -21,9 +20,8 @@ let i = 0;
   .then(response => response.json())
   .then(
     db => ResourcesBlock({ db })
-    // db => ( document.getElementById('resources').innerHTML = ResourcesBlock({ db })  )
-  )
 
+  )
 
 
 function ResourcesBlock({ db }) {
@@ -33,18 +31,19 @@ function ResourcesBlock({ db }) {
 }
 
 function ResourceList({ cards }) {
+  // change the object to array
   cards.forEach (card=> {
        arrcards.push(card)
   })
-  arrcards.forEach((card)=>{
-    document.getElementById('yencard').innerHTML+=
-    "<h1>"+card.title+"</h1>"+"<h2>"+card.subtitle+"</h2>"
-    +"<p>"+card.text+"</p>"
-  })
-  // document.getElementById('yencard').innerHTML=
-  // "<h1>"+arrcards[2].title+"</h1>"+"<h2>"+arrcards[2].subtitle+"</h2>"
-  // +"<p>"+arrcards[2].text+"</p>"
+ 
 
+  for (let i=0 ; i<x; i++) {
+      document.getElementById('yencard').innerHTML+=
+      "<div class=card>"
+          +"<h1>"+arrcards[i].id+" "+arrcards[i].title+"</h1>"+"<h2>"+arrcards[i].subtitle+"</h2>"
+          +"<p>"+arrcards[i].text+"</p>"+
+      "</div>"
+  }
   console.log('be array', arrcards)
   return arrcards
 }
@@ -55,58 +54,60 @@ function NoResources() {
 }
 
 
-function nextSlide(){
-      if(i <= 0) i = arrcards.length;	
-      i--;
+function prevSlide(){
+      if(i <= 0) { i = arrcards.length; }	
+      i--
       console.log('Arrcards', arrcards[i])
-      item= arrcards[i]
-      // newpush.push()
-      YenCard(item)
+    
+      newpush=[]
+      count = 1
+      console.log('x',x)
+
+      for (j = i; j<arrcards.length; j++) {
+        console.log('j', j)
+        newpush.push(arrcards[j])
+      }
+
+      console.log('newpush', newpush)
+      YenCard(newpush)
       return 		 
 }
   
 
-function prevSlide(){
+function nextSlide(){
       if(i >= arrcards.length-1) i = -1;
       i++;
       console.log('Arrcards', arrcards[i])
       item= arrcards[i]
-      // newpush.push()
-      YenCard(item)
+      newpush=[]
+
+      console.log('x',x)
+      for (j = i; j<arrcards.length; j++) {
+
+        console.log('j', j)
+        newpush.push(arrcards[j])
+
+      }
+
+      YenCard(newpush)
       return 
 }  
 
 
-  const getcard= document.getElementById('resources')
-
-  // // const container = document.querySelector('.cardjs');
-  // // // const yenslider = document.querySelector('.yenslider')
-  // const newcard = document.createElement("div");
-  
-  // // const yenslider = document.querySelectorAll('.yencard')
-  // let i = 0;
-  
-
-  function YenCard(item){
+  function YenCard(newpush){
     console.log('item', item)
+    showcard =[]
     console.log('item title', item.title)
-    document.getElementById('yencard').innerHTML=
-    "<h1>"+item.title+"</h1>"+"<h2>"+item.subtitle+"</h2>"
-    +"<p>"+item.text+"</p>"
-    // const domcard=document.getElementById('yencard').innerHTML=
-    // "<h1>"+cards[i].title+"</h1>"+"<h2>"+cards[i].subtitle+"</h2>"
-    // +"<p>"+cards[i].text+"</p>"
-    // console.log('Arrcards[i]', getcard)
-    
-    // // console.log('newcard',newcard)
-    //   newcard.appendChild(getcard)
-    //   // container=newcard
-    //   // return container
-    //  const currentArray = document.getElementById("yencard")
-    // // console.log('currentArray',currentArray)
-    //   return document.body.insertBefore(newcard, currentArray);
 
-    
+    document.getElementById('yencard').innerHTML=""
+    for (let i=0 ; i<x; i++) {
+    document.getElementById('yencard').innerHTML+=
+    "<div class=card>"
+        +"<h1>"+newpush[i].id+" "+newpush[i].title+"</h1>"+"<h2>"+newpush[i].subtitle+"</h2>"
+        +"<p>"+newpush[i].text+"</p>"+
+    "</div>"
+    }
+
   }
 
 
