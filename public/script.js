@@ -5,9 +5,10 @@
 
 arrcards=[]
 
-x = 3 // configable by showing the coloum
+x = 5 // configable by showing the coloum
 offset = x-1
-i = 0
+let i = 0
+
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
@@ -33,14 +34,14 @@ function ResourceList({ cards }) {
   })
   
 
-  for (i=0 ; i<x; i++) {
+  for (let i=0 ; i<x; i++) {
       document.getElementById('yencard').innerHTML+=
       "<div class=card>"
           +"<h1>"+arrcards[i].id+" "+arrcards[i].title+"</h1>"+"<h2>"+arrcards[i].subtitle+"</h2>"
           +"<p>"+arrcards[i].text+"</p>"+
       "</div>"
   }
-  console.log('be array', arrcards)
+  // console.log('be array', arrcards)
 
   return arrcards
 
@@ -54,7 +55,7 @@ function NoResources() {
 
 function prevSlide(){
       newpush=[]
-      if(i < 1) { i = arrcards.length-offset; }
+      if(i <1 ) { i = arrcards.length-offset; }
       console.log('prev', i)	
       i--
     
