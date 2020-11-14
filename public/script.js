@@ -1,9 +1,12 @@
 // Write JS code think in Angular way
 // use reverse gear to drive forward, are you kidding me ;-) ~ Yen
 // convert the stone age's rock into Angular gem ~ Yan
+// bact to the future 
 
 arrcards=[]
-x= 3 // configable by showing the coloum
+
+x = 3 // configable by showing the coloum
+offset = x-1
 i = 0
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
@@ -26,11 +29,11 @@ function ResourcesBlock({ db }) {
 function ResourceList({ cards }) {
   // change the object to array
   cards.forEach (card=> {
-       arrcards.push(card)
+       return arrcards.push(card)
   })
- 
+  
 
-  for (let i=0 ; i<x; i++) {
+  for (i=0 ; i<x; i++) {
       document.getElementById('yencard').innerHTML+=
       "<div class=card>"
           +"<h1>"+arrcards[i].id+" "+arrcards[i].title+"</h1>"+"<h2>"+arrcards[i].subtitle+"</h2>"
@@ -38,7 +41,9 @@ function ResourceList({ cards }) {
       "</div>"
   }
   console.log('be array', arrcards)
+
   return arrcards
+
 }
   
 
@@ -49,7 +54,8 @@ function NoResources() {
 
 function prevSlide(){
       newpush=[]
-      if(i <= 0) { i = arrcards.length; }	
+      if(i < 1) { i = arrcards.length-offset; }
+      console.log('prev', i)	
       i--
     
       for (j = i; j<arrcards.length; j++) {
@@ -62,7 +68,7 @@ function prevSlide(){
 
 function nextSlide(){
       newpush=[]
-      if(i >= arrcards.length-1) i = -1;
+      if(i >= arrcards.length-x) i = -1;
       i++;
  
       for (j = i; j<arrcards.length; j++) {
