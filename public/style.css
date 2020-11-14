@@ -59,6 +59,59 @@ body {
     
   }
  
+/********** button group **************/
+
+.group-btn {
+  margin: auto;
+	background: white;
+	padding: 26;
+  /* outline: none; */
+  width: 100px;
+  height: 50px;
+  bottom: 100%;
+  align-items: center;
+ }
+
+    .btn{
+      display: inline-block;
+      background: white;
+      /* padding: 0.5rem; */
+      width: 40px;
+      height: 40px;
+      outline: none;
+      border-color:none;
+
+    }
+
+  .preBtn{
+    text-align: center;
+    border-radius: 100%;
+    font-size: 20px;
+    outline: none;
+    border-color: white;
+
+  }
+
+  .nextBtn{
+    text-align: center;
+    border-color: white;
+    border-radius: 100%;
+    font-size: 20px;
+    outline: none;
+  }
+
+  .btn-text span {
+    vertical-align: middle;
+    display: table-cell;
+    color: #2DA936;
+    font-style: Arial;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+/********** End of button group **************/
+
+/********** thank you bootstrap grid *************/
 
   .row {
     display: -ms-flexbox;
@@ -69,8 +122,7 @@ body {
     margin-left: -15px;
   }
   
-
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
 .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
 .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
 .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
@@ -206,65 +258,4 @@ body {
   max-width: 100%;
 }
 
-
-.cardjs{
-  margin-top: 26px;
-  padding-right: 13px;
-  padding-left: 13px;
-	background-color: white;
-	flex: 0 0 80%;
-  min-height: 323px;
-  width: 308;
-  border-radius: 0px;
-  background: url('img/bcg-0.png')center/cover;
-	box-shadow: 5px 10px black;
-	position: relative;
-}
-
-.group-btn {
-  margin: auto;
-	background: white;
-	padding: 26;
-  /* outline: none; */
-  width: 100px;
-  height: 50px;
-  bottom: 100%;
-  align-items: center;
- }
-
-    .btn{
-      display: inline-block;
-      background: white;
-      /* padding: 0.5rem; */
-      width: 40px;
-      height: 40px;
-      outline: none;
-      border-color:none;
-
-    }
-
-  .preBtn{
-    text-align: center;
-    border-radius: 100%;
-    font-size: 20px;
-    outline: none;
-    border-color: white;
-
-  }
-
-  .nextBtn{
-    text-align: center;
-    border-color: white;
-    border-radius: 100%;
-    font-size: 20px;
-    outline: none;
-  }
-
-  .btn-text span {
-    vertical-align: middle;
-    display: table-cell;
-    color: #2DA936;
-    font-style: Arial;
-    font-weight: bold;
-    font-size: 20px;
-  }
+/********** end of responsive grid *************/
