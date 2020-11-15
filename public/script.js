@@ -1,32 +1,25 @@
-const request = 'http://127.0.0.1:3000/cards?'
-const request1 = 'http://127.0.0.1:3000/cards?_start=0&_end=5'
-const request2 = 'http://127.0.0.1:3000/cards?_start=0&_end=7'
-
 arrcards=[]
 
 x = 3 // configable by showing the coloum
 offset = x-1
 let i = 0
 
-// (click)="nextSlide()"
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
 preBtn.addEventListener('click',prevSlide);
 
   window
-  .fetch(request2)
-  .then( async(response )=> await response.json())
+  .fetch('db')
+  .then(async (response) => await response.json())
   .then(
-    db => {
-    console.log('fetch get', db)
-    ResourcesBlock({ db })
-    }
+    db => ResourcesBlock({ db })
   )
 
 
 function ResourcesBlock({ db }) {
-  db ? ResourceList({ db }) : NoResources()
+  cards =  db.cards
+  cards.length ? ResourceList({ cards }) : NoResources()
 }
 
 
@@ -35,8 +28,14 @@ function NoResources() {
 }
 
 
-function ResourceList({ db }) {
-  return YenCard(db)
+function ResourceList({ cards }) {
+  // change the object to array
+  cards.forEach (card=> {
+       return arrcards.push(card)
+  })
+
+  return YenCard(arrcards)
+
 }
   
 
@@ -65,7 +64,7 @@ function nextSlide(){
       return YenCard(newpush)
 }  
 
-// try { to } catch { me if you can } 
+
   function YenCard(cardsinfo){ 
     getcard = document.createElement('yencard')
     getcard.innerHTML=""   /// clear the stack
@@ -80,10 +79,9 @@ function nextSlide(){
             +"</div>"
     
     }
- 
-    document.getElementById('goCards').innerHTML="<div class='cards row'>"+kidCards+"</div>"
-    
+
+    document.getElementById('goCards').innerHTML="<div class='row cards'>"+kidCards+"</div>"
+
     return document.getElementById('goCards').innerHTML
 
   }
-
