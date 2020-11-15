@@ -5,9 +5,11 @@
 // back to the future , the future build from the past ;-)  ~ Chong
 // 
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+const request = 'http://127.0.0.1:3000/cards?'
 
-// http://127.0.0.1:3000/cards?_start=0&_end=5
-// http://127.0.0.1:3000/cards?_start=0&_end=7
+const request1 = 'http://127.0.0.1:3000/cards?_start=0&_end=5'
+
+const request2 = 'http://127.0.0.1:3000/cards?_start=0&_end=7'
 
 arrcards=[]
 
@@ -15,18 +17,8 @@ x = 3 // configable by showing the coloum
 offset = x-1
 let i = 0
 
-const request = new Request({
-  url: 'http://127.0.0.1:3000/',
-});
 
-// fetch(request);
-// let url = new URL('http://127.0.0.1:3000/db')
-// url.cards = new URLSearchParams({
-//     _start:0,
-//     _end:5
-// })
-
-
+// (click)="nextSlide()"
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
@@ -47,7 +39,7 @@ preBtn.addEventListener('click',prevSlide);
 // if (youcan=='read this') { robot } else { we are human }
 //    (youcan=='find this') ? alert('you search git history carefully') : this.snackbar(you only care the result )
 
-// *********** POST *********** WORK FINE 
+// *********** POST *********** WORK **************//
 // const data = { title: 'ROBOT or Human' };
 
 // fetch('http://127.0.0.1:3000/cards', {
@@ -65,19 +57,40 @@ preBtn.addEventListener('click',prevSlide);
 //   console.error('Error:', error);
 // });
 
-// *********** GET *********** 
+
+
+  // const url = new URL('http://127.0.0.1:3000');
+  // const params = new URLSearchParams(url.search);
+ 
+  // params.set('_start', 0);
+  // params.set('_end', 7);
+  // params.has('_end') === true
+  // params.toString() === '_start=0&_end=7'
+ 
+
+  // *********** GET *********** 
+
+  // .fetch('db')    //db.json
+
+  // .fetch('http://127.0.0.1:3000/cards?_start=0&_end=5', {
+  //   method: 'GET', 
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   mode: 'cors',
+  //   cache: 'default',
+  // })
+
+// Angular Module
+// public http:HttpClient, 
+// const start = 0
+// const end = 8
+// this.http.get('url/json?_start='+this.start+'&_end='+this.end+')
+
 
   window
-  // .fetch('db')    //db.json
-  .fetch('http://127.0.0.1:3000/cards?_start=0&_end=5', {
-    method: 'GET', 
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    mode: 'cors',
-    cache: 'default',
-    // URLSearchParams: {title: 'we'}
-  })
+  // .fetch('http://127.0.0.1:3000/cards?_start=0&_end=5')
+  .fetch(request2)
   .then( async(response )=> await response.json())
   .then(
     db => {
