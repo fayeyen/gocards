@@ -2,41 +2,83 @@
 // Write JS code think in Angular way 
 // use reverse gear to drive forward ;-) ~ Yen
 // convert the stone age's rock into Angular gem ~ Yan
-// bact to the future , the future build from the past ;-)  ~ Chong
-
+// back to the future , the future build from the past ;-)  ~ Chong
+// 
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
 // http://127.0.0.1:3000/cards?_start=0&_end=5
 // http://127.0.0.1:3000/cards?_start=0&_end=7
 
 arrcards=[]
 
-x = 5 // configable by showing the coloum
+x = 3 // configable by showing the coloum
 offset = x-1
 let i = 0
-start = 5;
-end = 8
 
 const request = new Request({
-  url: 'http://127.0.0.1:3000/cards?_start=0&_end=8',
-  method: 'GET'
+  url: 'http://127.0.0.1:3000/',
 });
 
-// fetch(request);s
-let url = new URL('http://127.0.0.1:3000/db')
-url.cards = new URLSearchParams({
-    _start:0,
-    _end:5
-})
+// fetch(request);
+// let url = new URL('http://127.0.0.1:3000/db')
+// url.cards = new URLSearchParams({
+//     _start:0,
+//     _end:5
+// })
 
 
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
 preBtn.addEventListener('click',prevSlide);
-// .fetch('db')
+
+// I like http module 
+// play the code don't let the code play you
+// No code is the code
+// try { build_towel of babel } throw { God confused the lenguages }
+// async await...god promised tomorrow never die
+// history is not the past , history is happening under level
+// *ngFor (let cool of code; index as i)  
+// if (basic=work) { tyepescript: as hot as firebase }
+// let code, let cook, let DOM as shadow
+// directive | director
+// I talk too much, no I type too much
+// talk to server be my clients, you need my secret
+// if (youcan=='read this') { robot } else { we are human }
+//    (youcan=='find this') ? alert('you search git history carefully') : this.snackbar(you only care the result )
+
+// *********** POST *********** WORK FINE 
+// const data = { title: 'ROBOT or Human' };
+
+// fetch('http://127.0.0.1:3000/cards', {
+//   method: 'POST', // or 'PUT'
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(data),
+// })
+// .then(response => response.json())
+// .then(data => {
+//   console.log('Success:', data);
+// })
+// .catch((error) => {
+//   console.error('Error:', error);
+// });
+
+// *********** GET *********** 
+
   window
-  .fetch('db')
-  .then(response => response.json())
+  // .fetch('db')    //db.json
+  .fetch('http://127.0.0.1:3000/cards?_start=0&_end=5', {
+    method: 'GET', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'cors',
+    cache: 'default',
+    // URLSearchParams: {title: 'we'}
+  })
+  .then( async(response )=> await response.json())
   .then(
     db => {
     console.log('fetch get', db)
@@ -46,8 +88,9 @@ preBtn.addEventListener('click',prevSlide);
 
 
 function ResourcesBlock({ db }) {
-  cards =  db.cards
-  cards.length ? ResourceList({ cards }) : NoResources()
+  // cards =  db.cards
+  // cards.length ? ResourceList({ cards }) : NoResources()
+  db ? ResourceList({ db }) : NoResources()
 }
 
 
@@ -56,13 +99,13 @@ function NoResources() {
 }
 
 
-function ResourceList({ cards }) {
+function ResourceList({ db }) {
   // change the object to array
-  cards.forEach (card=> {
-       return arrcards.push(card)
-  })
-  console.log('getCards', arrcards)
-  return YenCard(arrcards)
+  // cards.forEach (card=> {
+  //      return arrcards.push(card)
+  // })
+  console.log('getCards', db)
+  return YenCard(db)
 
 }
   
@@ -92,7 +135,7 @@ function nextSlide(){
       return YenCard(newpush)
 }  
 
-
+// try { to } catch { me if you can } 
   function YenCard(cardsinfo){ 
     getcard = document.createElement('yencard')
     getcard.innerHTML=""   /// clear the stack
@@ -107,13 +150,13 @@ function nextSlide(){
             +"</div>"
     
     }
-    // Angular not code in this way
-    //  I like *ngFor  
-
+    // Angular is shawdow DOM
+    //  I like *ngFor , we live under the shawdow
+    // 
     document.getElementById('goCards').innerHTML="<div class='cards row'>"+kidCards+"</div>"
 
     return document.getElementById('goCards').innerHTML
 
   }
 
-
+// return {Object or soul}
