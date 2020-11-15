@@ -1,25 +1,47 @@
-// Write JS code think in Angular way // no import require 
-// use reverse gear to drive forward, are you kidding me ;-) ~ Yen
+// NO import require 
+// Write JS code think in Angular way 
+// use reverse gear to drive forward ;-) ~ Yen
 // convert the stone age's rock into Angular gem ~ Yan
 // bact to the future , the future build from the past ;-)  ~ Chong
-// My English is not good , programming language is my second language 😅
+
+
+// http://127.0.0.1:3000/cards?_start=0&_end=5
+// http://127.0.0.1:3000/cards?_start=0&_end=7
 
 arrcards=[]
 
-x = 3 // configable by showing the coloum
+x = 5 // configable by showing the coloum
 offset = x-1
 let i = 0
+start = 5;
+end = 8
+
+const request = new Request({
+  url: 'http://127.0.0.1:3000/cards?_start=0&_end=8',
+  method: 'GET'
+});
+
+// fetch(request);s
+let url = new URL('http://127.0.0.1:3000/db')
+url.cards = new URLSearchParams({
+    _start:0,
+    _end:5
+})
+
 
 const nextBtn = document.querySelector('.nextBtn');
 const preBtn = document.querySelector('.preBtn');
 nextBtn.addEventListener('click',nextSlide);
 preBtn.addEventListener('click',prevSlide);
-
+// .fetch('db')
   window
   .fetch('db')
   .then(response => response.json())
   .then(
-    db => ResourcesBlock({ db })
+    db => {
+    console.log('fetch get', db)
+    ResourcesBlock({ db })
+    }
   )
 
 
@@ -39,7 +61,7 @@ function ResourceList({ cards }) {
   cards.forEach (card=> {
        return arrcards.push(card)
   })
-
+  console.log('getCards', arrcards)
   return YenCard(arrcards)
 
 }
@@ -85,8 +107,10 @@ function nextSlide(){
             +"</div>"
     
     }
+    // Angular not code in this way
+    //  I like *ngFor  
 
-    document.getElementById('goCards').innerHTML="<div class='row cards'>"+kidCards+"</div>"
+    document.getElementById('goCards').innerHTML="<div class='cards row'>"+kidCards+"</div>"
 
     return document.getElementById('goCards').innerHTML
 
